@@ -1,0 +1,14 @@
+<nav class="navbar">
+  <div class="navbar-left">
+    <a href="/" class="navbar-brand">BlogWEBapp</a>
+  </div>
+  <div class="navbar-right">
+    <% if(isLoggedIn) {%>
+      <a href="/edit-blog" class="navbar-btn">Create</a>
+      <a href="/logout" class="navbar-btn">Logout</a>
+    <% } else { %>
+      <a href="/login" class="navbar-btn signup">Login/Sign Up</a>
+    <% } %>
+  </div>
+</nav>
+

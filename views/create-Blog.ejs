@@ -1,0 +1,31 @@
+<%- include("./partials/head")%>
+<body>
+<%- include("./partials/nav") %>
+
+<div class="blog-form-container">
+  <% if(!isLoggedIn) { %>
+    <div class="reader-warning">
+      You need to
+       <a href="/signup">REGISTER</a> yourself
+    </div>
+  <% }else { %>
+     <h1><%= !blog ? "Create a New Blog Post" : "Edit the details"%></h1>
+  <form action="/edit-blog/<%= blog ? blog._id : '' %>" method="POST">
+    <label for="title">Title:</label>
+    <input type="text" id="title" name="title" value="<%= blog ? blog.title : '' %>" required>
+
+    <label for="content">Content:</label>
+    <textarea id="content" name="content" rows="12" required><%= blog ? blog.content : '' %></textarea>
+
+    <input type="hidden" id="author" name="author" value="<%= user._id %>" required>
+
+    <label for="credits">Credits (if any):</label>
+    <input type="text" id="credits" name="credits" value="<%= blog ? blog.credits : '' %>">
+
+    <button type="submit"><%= !blog ? "Publish" : "Update" %></button>
+  </form>
+  <% } %>
+</div>
+
+</body>
+</html>

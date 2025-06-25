@@ -1,0 +1,29 @@
+{
+  "name": "blog-webapp",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "nodemon index.js"
+  },
+  "keywords": [],
+  "author": "Deepanshu kumar",
+  "license": "ISC",
+  "description": "A blog web app where users can register and log in using email and password. Logged-in users can create, edit, and delete their own blog posts . All blog posts should be visible on the homepage, but only the post author should see “edit” and “delete” options on their posts. Non-logged-in visitors can read posts but cannot create or modify them. Use sessions or cookies for login persistence. Store users and blog posts in MongoDB using Mongoose, and protect routes using authentication middleware. Optionally, allow comments on posts.",
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "connect-mongodb-session": "^5.0.0",
+    "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.1",
+    "express-validator": "^7.2.1",
+    "mongodb": "^6.17.0",
+    "mongoose": "^8.16.0",
+    "nodemon": "^3.1.10"
+  }
+}

@@ -1,0 +1,28 @@
+<%- include("./partials/head")%>
+<body>
+    <%- include("./partials/nav")%>
+
+  <div class="blog-container">
+    <% if (!blogs || blogs.length === 0) { %>  
+      <p>Oops! You don't <b>Write</b> any blog yet</p>
+      <a href="edit-blog">Create Blog</a>
+    <% } else { %>      
+      <h1>Here are Your Blogs</h1>
+      <% blogs.forEach((blog,) => { %>
+        <div class="blog-post">
+          <h2 class="title">
+            <strong><%= blog.title%></strong>
+          </h2>
+          <p class="content">
+            - <%= blog.content.length > 150 ? blog.content.substring(0, 150) + "..." : blog.content %> 
+            <a href="read-blog/<%= blog._id %>">Read More</a>
+          </p>
+          <h3 class="author">~ <%= blog.author.userName%></h3>
+          <hr>
+        </div>
+      <% }) %>
+    <% } %>
+  </div>
+
+</body>
+</html>

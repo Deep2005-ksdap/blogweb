@@ -1,0 +1,42 @@
+<%- include("./partials/head")%>
+<body>
+    <%- include("./partials/nav")%>
+    <div class="home-main-container">
+        <% if(!isLoggedIn) { %>   
+            <div class="visitor-message">  
+                   Want to <a href="/edit-blog"><b>Create</b></a> Blog 
+                </div>
+            <!-- <div class="visitor-message">
+               Else! you can <b>Read </b>here
+            </div> -->
+        <% } else { %>
+            <span class="welcome-emoji">👋</span>
+            <div class="welcome-message">
+                Welcome <u><%= user.userName.toUpperCase()  %></u>
+            </div>
+            <a class="go-blog-link" href="/blog">👉 Your Blogs</a>
+        <% } %>
+        
+             <div class="blog-container">
+                <% if (!blogs || blogs.length === 0) { %>  
+                    <p style="text-align:center; color:#888;">Oops! there is no Blog yet</p>
+                <% } else { %>      
+                <h1>All Blogs are listed here:</h1>
+                <% blogs.forEach((blog) => { %>
+                    <div class="blog-post">
+                    <h2 class="title">
+                        <strong><%= blog.title%></strong>
+                    </h2>
+                    <p class="content">
+                        - <%= blog.content.length > 150 ? blog.content.substring(0, 150) + "..." : blog.content %> 
+                        <a href="read-blog/<%= blog._id %>">Read More</a>
+                    </p>
+                    <h3 class="author">~ <%= blog.author.userName%></h3>
+                    <hr>
+                    </div>
+                <% }) %>
+                <% } %>
+            </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<%- include("./partials/head")%>
+<body>
+    <%- include("./partials/nav")%>
+    <div class="blog-container">
+      <div class="blog-post">
+        <h2 class="title">
+          <strong><%= blog.title%></strong>
+        </h2>
+        <div class="blog-meta">
+          <span>Posted on <%= blog.createdAt.toDateString() %></span>
+          <% if(isLoggedIn) { %>
+            <span>Last edited on <%= blog.updatedAt.toDateString() %></span>
+          <% } %>
+        </div>
+        <div class="content">
+          <%= blog.content %>
+        </div>
+        <div>
+          <span class="author-label">Author:</span>
+          <h3 class="author">~ <%= blog.author.userName%></h3>
+        </div>
+        <hr>
+
+        <!-- giving authorisation to user that not anyone can edit or delete the blog -->
+        <% if(user.userName === blog.author.userName) { %>
+          <div class="blog-actions">
+            <a href="/edit-blog/<%= blog._id %>">Edit Blog</a>
+            <form action="/delete-blog/<%= blog._id %>" method="POST" onsubmit="return confirm('Are you sure you want to delete this blog?');">
+              <input type="submit" value="Delete">
+            </form>
+          </div>
+        <% } %>
+      </div>
+    </div>
+</body>
+</html>
