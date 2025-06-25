@@ -47,11 +47,10 @@ exports.getReadBlog =  async (req, res) => {
 }
 
 exports.getCreateBlog = (req, res) => {
-    const user = req.session && req.session.user ?  req.session.user : '';
+    const user = req.session && req.session.user ?  req.session.user : null;
     res.render("create-blog", {
         isLoggedIn: req.isLoggedIn,
         pageTitle: "create Blog",
-        userId : user._id,
         user,
         blog: null                     // null will ensure that he has not even a single blog although it might be ,, was using blog : [] causing error 
     })
