@@ -48,7 +48,7 @@ exports.getReadBlog =  async (req, res) => {
 
 exports.getCreateBlog = (req, res) => {
     const user = req.session && req.session.user ?  req.session.user : null;
-    res.render("create-blog", {
+    res.render("create-Blog", {
         isLoggedIn: req.isLoggedIn,
         pageTitle: "create Blog",
         user,
