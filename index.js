@@ -35,7 +35,7 @@ const store = new MongoDBStore({
 app.use(session({
     secret: sessionSecret,
     resave: false,
-    saveUninitialized: true,
+    saveUninitialized: false,
     store: store,
     cookie: {
         maxAge: 1000 * 60 * 60  // 1 hour
