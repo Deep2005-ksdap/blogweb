@@ -107,6 +107,6 @@ exports.postLogin =async (req, res) => {
   
 exports.getLogout =(req, res) => {
      req.session.destroy(() =>{
-        res.redirect("/");
+        res.redirect("/home");
     })   
 }

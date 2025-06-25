@@ -42,15 +42,17 @@ app.use(session({
     }
 }));
 
+// Routes
+app.use((req, res, next) => {
+  console.log(`[${req.method}] ${req.url}`);
+  next();
+});
+app.get("/", (req, res) => res.redirect("/home"));
+
 // Passing session info
 app.use((req, res, next) => {
     req.isLoggedIn = req.session && req.session.isLoggedIn ? req.session.isLoggedIn : false;
     next();
-});
-
-// Routes
-app.get("/", (req, res, next) => {
-    res.redirect("/home");
 });
 
 app.use(editorRouter);
