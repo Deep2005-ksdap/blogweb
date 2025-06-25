@@ -51,9 +51,12 @@ app.get("/", (req, res) => res.redirect("/home"));
 
 // Passing session info
 app.use((req, res, next) => {
-    req.isLoggedIn = req.session && req.session.isLoggedIn ? req.session.isLoggedIn : false;
+    const isLoggedIn = req.session && req.session.isLoggedIn ? req.session.isLoggedIn : false;
+    req.isLoggedIn = isLoggedIn;
+    res.locals.isLoggedIn = isLoggedIn;  // 👈 Make it available to EJS
     next();
 });
+
 
 app.use(editorRouter);
 app.use(authRouter);
