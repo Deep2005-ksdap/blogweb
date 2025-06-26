@@ -1,7 +1,7 @@
 <%- include("./partials/head")%>
 <body>
     <%- include("./partials/nav")%>
-
+  <% if(isLoggedIn) {%>
   <div class="blog-container">
     <% if (!blogs || blogs.length === 0) { %>  
       <p>Oops! You don't <b>Write</b> any blog yet</p>
@@ -23,6 +23,11 @@
       <% }) %>
     <% } %>
   </div>
+  <% } else { %>
+      <p class="reader-warning">you are not <b>
+        <a href="/login">login</a></b> yet
+      </p>
+    <% } %>
 
 </body>
 </html>
